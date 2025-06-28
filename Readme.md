@@ -1,6 +1,6 @@
 # Show Preview Server
 
-A simple Express.js server for previewing HTML files.
+A simple Express.js server for previewing HTML files locally.
 
 ## Features
 
@@ -8,6 +8,7 @@ A simple Express.js server for previewing HTML files.
 - Automatic port scanning (3000-9000)
 - Clean error handling
 - Simple command-line interface
+- Global command availability via npm link
 
 ## Installation
 
@@ -17,16 +18,32 @@ A simple Express.js server for previewing HTML files.
    npm install express
    ```
 
+## Global Installation
+
+To make the `show-preview` command available globally:
+
+1. Navigate to the project directory:
+   ```bash
+   cd path/to/show-preview
+   ```
+
+2. Create a global link:
+   ```bash
+   npm link
+   ```
+
+3. Now you can use `show-preview` from anywhere on your system
+
 ## Usage
 
 Run the server with:
 ```bash
-node app.js --show <your-html-file>
+show-preview --show <your-html-file>
 ```
 
 Example:
 ```bash
-node app.js --show hello.html
+show-preview --show hello.html
 ```
 
 The server will automatically find an available port and start serving your file.
@@ -51,6 +68,8 @@ Show Preview/
 - Make sure your HTML file exists in the same directory as app.js
 - The server will serve files from the directory containing app.js
 - Uses Express.js for serving static files
+- The `#!/usr/bin/env node` shebang line makes the script executable
+- The `bin` field in package.json makes the command globally available
 
 ## Support
 

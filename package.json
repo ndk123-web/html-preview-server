@@ -11,5 +11,8 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0"
+  },
+  "bin": {
+    "show-preview": "./app.js"
   }
 }

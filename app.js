@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -20,7 +22,7 @@ const scriptPath = process.argv[1];
 const parentFolder = path.dirname(scriptPath);
 
 // Check file exists
-const filePath = path.join(parentFolder, filename);
+const filePath = path.join(process.cwd(), filename);
 if (!fs.existsSync(filePath)) {
     console.error(`Error: File not found: ${filePath}`);
     process.exit(1);
