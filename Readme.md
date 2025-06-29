@@ -66,8 +66,8 @@ Show Preview/
 ## Notes
 
 - Make sure your HTML file exists in the same directory as app.js
-- The server will serve files from the directory containing app.js
-- Uses Express.js for serving static files
+- The server will serve files from the any directory
+- Uses Express.js for serving static files 
 - The `#!/usr/bin/env node` shebang line makes the script executable
 - The `bin` field in package.json makes the command globally available
 
