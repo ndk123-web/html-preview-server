@@ -36,7 +36,7 @@ To make the `show-preview` command available globally:
 
 ## Usage
 
-Run the server with:
+Run the server in any folder with:
 ```bash
 show-preview --show <your-html-file>
 ```
