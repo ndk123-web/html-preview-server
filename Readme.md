@@ -22,6 +22,7 @@ npm install -g dev-preview
 
 ## Usage
 
+### Basic Usage
 Run the server with:
 ```bash
 dev-preview --show <your-html-file>
@@ -31,6 +32,18 @@ Example:
 ```bash
 dev-preview --show hello.html
 ```
+
+### Version Information
+Check the installed version:
+```bash
+dev-preview --version
+```
+
+### Available Ports
+The server will automatically try ports 3000-9000 if the default port is in use.
+
+### File Types
+Only HTML files are supported. The server will exit with an error if you try to serve a non-HTML file.
 
 The server will automatically find an available port and start serving your file.
 
