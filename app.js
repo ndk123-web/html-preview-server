@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// This is for Mac and Linux OS 
 
 const express = require('express');
 const path = require('path');
@@ -6,8 +7,17 @@ const fs = require('fs');
 
 const app = express();
 
+
+
 // Argument validation
 const args = process.argv;
+
+const isCheckingVersion = args.indexOf('--version')
+if (isCheckingVersion !== -1){
+    console.log("Version: 1.0.0")
+    process.exit(0)
+}
+
 const showIndex = args.indexOf('--show');
 
 if (showIndex === -1 || !args[showIndex + 1]) {

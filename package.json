@@ -1,18 +1,32 @@
 {
-  "name": "show-preview",
+  "name": "dev-preview",
   "version": "1.0.0",
+  "description": "A simple Express.js server for previewing HTML files locally",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "dev-preview": "./app.js"
   },
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ndk123-web/html-preview-server.git"
+  },
+  "keywords": [
+    "express",
+    "preview",
+    "html",
+    "server",
+    "development"
+  ],
+  "author": "Navnath",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "express": "^5.1.0"
   },
-  "bin": {
-    "show-preview": "./app.js"
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
