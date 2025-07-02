@@ -12,7 +12,7 @@ const args = process.argv;
 
 const isCheckingVersion = args.indexOf('--version')
 if (isCheckingVersion !== -1){
-    console.log("Version: 1.0.0")
+    console.log("Version: 1.0.2")
     process.exit(0)
 }
 
