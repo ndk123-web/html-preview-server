@@ -51,9 +51,12 @@ The server will automatically find an available port and start serving your file
 
 ```
 Dev Preview/
-├── app.js        # Main server file
-├── hello.html    # Example HTML file
-└── my.html       # Another example HTML file
+           ├── app.js        # Main server file
+           Test/
+               ├── hello.html    # Example HTML file
+               └── my.html       # Another example HTML file
+               ├── test.html           
+               ├── style.css  
 ```
 
 ## Error Handling
