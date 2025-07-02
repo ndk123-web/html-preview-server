@@ -7,8 +7,6 @@ const fs = require('fs');
 
 const app = express();
 
-
-
 // Argument validation
 const args = process.argv;
 
@@ -44,7 +42,9 @@ if (!fs.existsSync(filePath)) {
 }
 
 // Serve static files
-app.use(express.static(parentFolder));
+// Serve static files from the directory containing the HTML file
+const fileDir = path.dirname(filePath);
+app.use(express.static(fileDir));
 
 // Route to handle requests
 app.get('/', (req, res) => {
