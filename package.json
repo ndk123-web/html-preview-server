@@ -1,6 +1,6 @@
 {
   "name": "dev-preview",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple Express.js server for previewing HTML files locally",
   "main": "app.js",
   "bin": {
