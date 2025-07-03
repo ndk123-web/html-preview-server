@@ -11,9 +11,15 @@ const app = express();
 const args = process.argv;
 
 const isCheckingVersion = args.indexOf('--version')
-if (isCheckingVersion !== -1){
-    console.log("Version: 1.0.5")
+if (isCheckingVersion !== -1) {
+    console.log("Version: 1.0.6")
     process.exit(0)
+}
+
+const isCheckingHelp = args.indexOf('--help')
+if (isCheckingHelp !== -1) {
+    console.log(`Usage: node app.js [options]\n\nA simple HTML preview server.\n\nOptions:\n  --help           Show this help information and exit\n  --version        Show version information and exit\n  --show           Start the preview server and open the browser\n\nExamples:\n  dev-preview --help\n  dev-preview --version\n  dev-preview --show <filename>.html\n`);
+    process.exit(0);
 }
 
 const showIndex = args.indexOf('--show');
