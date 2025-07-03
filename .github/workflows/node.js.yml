@@ -8,18 +8,20 @@ on:
       - 'package.json'
 
 jobs:
-  build-and-publish:
-    runs-on: ubuntu-latest
 
+  # Name can be anything  
+  build-and-publish:
+    runs-on: ubuntu-latest # It means Github creates VM and there all this workflow will run 
+ 
     strategy:
       matrix:
         node-version: [18.x]
 
     steps:
-      - name: Clone the repo on Ubuntu VM on GitHub  
+      - name: Clone the repo on Ubuntu VM on GitHub  # Clone this repo on that VM 
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }} # setup node js on VM 
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
