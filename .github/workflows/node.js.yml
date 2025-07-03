@@ -8,33 +8,36 @@ on:
       - 'package.json'
 
 jobs:
-  # Job 1  
   build-and-publish:
-    runs-on: ubuntu-latest  # This Workflow will run on ubuntu-latest  
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x]
 
     steps:
-      - name: clone the repo on ubuntu vm on github  
-      - uses: actions/checkout@v4
-    
+      - name: Clone the repo on Ubuntu VM on GitHub  
+        uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4   # Install node on that github ubuntu vm  
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}   # describe the version  
-          registry-url: 'https://registry.npmjs.org/' # give the url  
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org/'
           cache: 'npm'
 
-      - run: npm ci
-      - run: npm -v
-      - run: node -v
-      - run: npm run build --if-present
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check versions
+        run: |
+          npm -v
+          node -v
+
+      - name: Build (if applicable)
+        run: npm run build --if-present
 
       - name: Publish to npm
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-
