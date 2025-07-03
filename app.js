@@ -12,21 +12,21 @@ const args = process.argv;
 
 const isCheckingVersion = args.indexOf('--version')
 if (isCheckingVersion !== -1){
-    console.log("Version: 1.0.2")
+    console.log("Version: 1.0.5")
     process.exit(0)
 }
 
 const showIndex = args.indexOf('--show');
 
 if (showIndex === -1 || !args[showIndex + 1]) {
-    console.error('Usage: node app.js --show <filename>');
+    console.error('Syntax Error: dev-preview --show <filename>');
     process.exit(1);
 }
 
 const filename = args[showIndex + 1];
 
 if (!filename) {
-    console.error('Usage: node app.js --show <filename>');
+    console.error('Syntax Error: dev-preview --show <filename>');
     process.exit(1);
 }
 
@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
         res.sendFile(filePath);
     } else {
         // For non-HTML files, show error
-        console.log('Only HTML files can be served');
+        console.error('Message: Only HTML files can be served');
         process.exit(1);
     }
 });
@@ -71,7 +71,7 @@ function startServer(port) {
 
     if (ext !== '.html') {
         // For non-HTML files, show error
-        console.log('Only HTML files can be served');
+        console.error('Message: Only HTML files can be served');
         process.exit(1);
     }
 
