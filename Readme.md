@@ -1,6 +1,6 @@
 # Dev Preview Server
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/ndk123-web/html-preview-server)
+[![Version](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/ndk123-web/html-preview-server)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 A simple Express.js server for previewing HTML files locally.
