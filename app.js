@@ -4,6 +4,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
 
@@ -51,6 +52,13 @@ if (!fs.existsSync(filePath)) {
 // Serve static files from the directory containing the HTML file
 const fileDir = path.dirname(filePath);
 app.use(express.static(fileDir));
+app.use(
+  cors({
+    origin: "*",
+    allowedHeaders: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);
 
 // Route to handle requests
 app.get('/', (req, res) => {
