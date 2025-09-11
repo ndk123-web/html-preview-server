@@ -6,6 +6,7 @@ on:
     # Only publish on version bumps (if package.json version changed)
     paths:
       - 'package.json'
+      - 'app.js'
 
 jobs:
 
