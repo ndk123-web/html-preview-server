@@ -19,7 +19,8 @@
     "preview",
     "html",
     "server",
-    "development"
+    "development",
+    "preview server"
   ],
   "author": "Navnath",
   "license": "ISC",
