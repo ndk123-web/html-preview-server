@@ -41,6 +41,9 @@ jobs:
       - name: Build (if applicable)
         run: npm run build --if-present
 
+      - name: Update the Version 
+      - run: npm version patch
+
       - name: Publish to npm
         run: npm publish
         env:
