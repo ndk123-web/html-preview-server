@@ -52,6 +52,8 @@ if (!fs.existsSync(filePath)) {
 // Serve static files from the directory containing the HTML file
 const fileDir = path.dirname(filePath);
 app.use(express.static(fileDir));
+
+// added cors so that anyone in netwokr can access thr html file 
 app.use(
   cors({
     origin: "*",
@@ -103,3 +105,4 @@ function startServer(port) {
 
 // Start from port 3000
 startServer(3000);
+
