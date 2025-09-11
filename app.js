@@ -78,7 +78,7 @@ app.get('/', (req, res) => {
 // Start server
 function startServer(port) {
     const server = app.listen(port, () => {
-        console.log(`✅ Server running at http://localhost:${port}/`);
+        console.log(`🎇 Server running at http://localhost:${port}/`);
     });
 
     const ext = path.extname(filename).toLowerCase();
@@ -92,7 +92,7 @@ function startServer(port) {
     // if os port bind error then it emmits the 'error' event with error data
     server.on('error', (err) => {
         if (err.code === 'EADDRINUSE') {
-            console.warn(`⚠️  Port ${port} in use, trying ${port + 1}...`);
+            console.warn(`👀 Port ${port} in use, trying ${port + 1}...`);
             startServer(port + 1); // recursive call
         } else {
             console.error('🚨 Server error:', err);
