@@ -3,25 +3,24 @@ name: Node.js CI + Publish
 on:
   push:
     branches: [ "main" ]
-    # Only publish on version bumps (if package.json version changed)
     paths:
       - 'package.json'
+      - 'app.js'
+      - 'Readme.md'
 
 jobs:
-
-  # Name can be anything  
   build-and-publish:
-    runs-on: ubuntu-latest # It means Github creates VM and there all this workflow will run 
+    runs-on: ubuntu-latest
  
     strategy:
       matrix:
         node-version: [18.x]
 
     steps:
-      - name: Clone the repo on Ubuntu VM on GitHub  # Clone this repo on that VM 
+      - name: Clone the repo on Ubuntu VM on GitHub
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }} # setup node js on VM 
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
@@ -29,7 +28,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Check versions
         run: |
@@ -39,9 +38,10 @@ jobs:
       - name: Build (if applicable)
         run: npm run build --if-present
 
+      - name: Update the Version
+        run: npm version patch --no-git-tag-version
+
       - name: Publish to npm
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-
