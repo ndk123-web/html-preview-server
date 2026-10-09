@@ -2,46 +2,38 @@ name: Node.js CI + Publish
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths:
-      - 'package.json'
-      - 'app.js'
-      - 'Readme.md'
+      - "package.json"
+      - "package-lock.json"
+      - "app.js"
+      - "Readme.md"
+      - ".github/workflows/node.js.yml"
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
- 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-      - name: Clone the repo on Ubuntu VM on GitHub
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 18
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org/'
-          cache: 'npm'
+          node-version: 18.x
+          registry-url: https://registry.npmjs.org/
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Check versions
-        run: |
-          npm -v
-          node -v
+      - name: Run tests
+        run: npm test
 
-      - name: Build (if applicable)
-        run: npm run build --if-present
-
-      - name: Update the Version
-        run: npm version patch --no-git-tag-version
+      - name: Check npm authentication
+        run: npm whoami --registry=https://registry.npmjs.org/
 
       - name: Publish to npm
-        run: npm publish
+        run: npm publish --access public --registry=https://registry.npmjs.org/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
