@@ -1,6 +1,6 @@
 # Dev Preview Server
 
-[![Version](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/ndk123-web/html-preview-server)
+[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/ndk123-web/html-preview-server)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 A simple Express.js server for previewing HTML files locally.
@@ -12,6 +12,7 @@ A simple Express.js server for previewing HTML files locally.
 - Clean error handling
 - Simple command-line interface
 - Global command availability via npm
+- Automatically restarts on file changes while keeping the same port
 
 ## Installation
 
@@ -25,12 +26,12 @@ npm install -g dev-preview
 ### Basic Usage
 Run the server with:
 ```bash
-dev-preview --show <your-html-file>
+dev-preview <your-html-file>
 ```
 
 Example:
 ```bash
-dev-preview --show hello.html
+dev-preview hello.html
 ```
 
 ### Version Information
@@ -40,7 +41,10 @@ dev-preview --version
 ```
 
 ### Available Ports
-The server will automatically try ports 3000-9000 if the default port is in use.
+The server starts on port `3000`. If that port is already in use, it tries the next
+available port. When a file in the HTML file's directory changes, the preview
+server restarts automatically on the same port, so the updated content is
+available without starting another command.
 
 ### File Types
 Only HTML files are supported. The server will exit with an error if you try to serve a non-HTML file.
@@ -62,7 +66,8 @@ Dev Preview/
 ## Error Handling
 
 - Shows clear error messages if file not found
-- Automatically tries next port if current port is in use
+- Automatically tries the next port if port 3000 is in use
+- Automatically restarts on changes in the preview directory
 - Proper error handling for server startup failures
 
 ## Requirements
